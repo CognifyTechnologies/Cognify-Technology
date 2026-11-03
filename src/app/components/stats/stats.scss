@@ -3,23 +3,26 @@
   margin-top: -30px;
   z-index: 10;
   padding: 0 0 clamp(30px, 4vw, 50px);
+  width: 100%;
+  max-width: 100%;
 
-  @media (max-width: 768px) {
-    margin-top: 10px;
+  @media (max-width: 1080px) {
+    margin-top: 24px;
   }
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(16px, 2vw, 28px);
+  width: 100%;
 
   @media (max-width: 1080px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -27,12 +30,14 @@
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: clamp(24px, 2.5vw, 32px);
+  padding: clamp(20px, 2.5vw, 32px);
   box-shadow: var(--shadow-md);
   transition: var(--transition-normal);
   text-align: left;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
 
   &:hover {
     border-color: rgba(6, 182, 212, 0.4);
