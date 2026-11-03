@@ -1,0 +1,128 @@
+.services-section {
+  position: relative;
+}
+
+.services-grid {
+  margin-top: 10px;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: clamp(26px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-normal);
+  position: relative;
+
+  &:hover {
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-6px);
+
+    .service-icon {
+      transform: scale(1.05) rotate(3deg);
+    }
+
+    .service-action-link i {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.service-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.service-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--color-accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.55rem;
+  transition: transform 0.25s ease;
+}
+
+.service-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-gradient);
+  color: #ffffff;
+}
+
+.service-title {
+  font-size: clamp(1.18rem, 1.4vw, 1.32rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.service-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.62;
+  margin-bottom: 24px;
+}
+
+.service-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+
+    i {
+      color: var(--color-accent-teal);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+  }
+}
+
+.service-footer {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-light);
+}
+
+.service-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--color-accent-cyan);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition-normal);
+
+  i {
+    transition: transform 0.2s ease;
+  }
+}

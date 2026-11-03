@@ -1,0 +1,257 @@
+<section id="offshore" class="section-padding offshore-section">
+  <div class="container">
+    <div class="section-header" appScrollReveal>
+      <div class="section-badge">
+        <i class="bi bi-people-fill"></i>
+        <span>Global Talent Augmentation</span>
+      </div>
+      <h2 class="section-title">Hire Dedicated Offshore Developers</h2>
+      <p class="section-desc">
+        Scale your engineering capacity seamlessly with dedicated, high-caliber developers
+        who work exclusively on your product as a direct extension of your core team.
+      </p>
+    </div>
+
+    <div class="offshore-layout">
+      <!-- Left Column: Benefits & Value Proposition -->
+      <div class="offshore-benefits" appScrollReveal>
+        <div class="model-explainer-card">
+          <h3 class="explainer-title">How Our Offshore Model Works</h3>
+          <p class="explainer-p">
+            You gain full-time or part-time developers dedicated solely to your company's
+            codebase, participating in your daily standups, Jira/Slack channels, and sprint cycles,
+            without the burden of local recruitment fees, benefits, or workspace overhead.
+          </p>
+
+          <div class="benefits-list">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="bi bi-cash-stack"></i>
+              </div>
+              <div class="benefit-text">
+                <strong>Cost-Effective &amp; High ROI</strong>
+                <p>Save up to 60% compared to local hiring without compromising on code quality or architecture standards.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="bi bi-sliders"></i>
+              </div>
+              <div class="benefit-text">
+                <strong>Flexible Hiring Models</strong>
+                <p>Choose between hourly, part-time, or full-time monthly engagements with freedom to scale up or down.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="bi bi-cpu-fill"></i>
+              </div>
+              <div class="benefit-text">
+                <strong>Mastery Across Modern Stacks</strong>
+                <p>Skilled in Angular, React, .NET Core, Node.js, SQL Server, Microsoft Azure, and AWS.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="bi bi-lightning-charge-fill"></i>
+              </div>
+              <div class="benefit-text">
+                <strong>Rapid Onboarding (Under 48 Hours)</strong>
+                <p>Developers ready to clone repositories, setup dev environments, and submit their first pull request fast.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="bi bi-clock-history"></i>
+              </div>
+              <div class="benefit-text">
+                <strong>Timezone-Friendly Communication</strong>
+                <p>Guaranteed daily overlapping working hours for real-time meetings, pairing, and sprint planning.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Offshore Request Form -->
+      <div class="offshore-form-column" appScrollReveal [revealDelay]="120">
+        <div class="offshore-form-card">
+          <div class="form-card-header">
+            <h3 class="form-title">Request Offshore Developers</h3>
+            <p class="form-subtitle">Fill in your requirements below to receive developer profiles and hourly/monthly rates.</p>
+          </div>
+
+          @if (isSubmittedSuccess()) {
+            <div class="alert-success-modern">
+              <i class="bi bi-check-circle-fill"></i>
+              <div>
+                <strong>Inquiry Initiated Successfully!</strong>
+                <span>
+                  Your email app has opened. Please press Send to complete your inquiry.
+                  You can also email us directly at
+                  <a [href]="'mailto:' + mailService.recipientEmail">{{ mailService.recipientEmail }}</a>.
+                </span>
+              </div>
+            </div>
+          }
+
+          <form [formGroup]="offshoreForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- Full Name & Email Row -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="offshoreFullName">
+                  Full Name <span class="required-star">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="offshoreFullName"
+                  class="form-control"
+                  [class.is-invalid]="isFieldInvalid('fullName')"
+                  formControlName="fullName"
+                  placeholder="e.g. John Doe"
+                />
+                @if (isFieldInvalid('fullName')) {
+                  <div class="invalid-feedback">Full Name is required (minimum 2 characters).</div>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="offshoreEmail">
+                  Work Email <span class="required-star">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="offshoreEmail"
+                  class="form-control"
+                  [class.is-invalid]="isFieldInvalid('email')"
+                  formControlName="email"
+                  placeholder="e.g. john@company.com"
+                />
+                @if (isFieldInvalid('email')) {
+                  <div class="invalid-feedback">Please enter a valid work email address.</div>
+                }
+              </div>
+            </div>
+
+            <!-- Company Name & Country Row -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="offshoreCompany">Company Name</label>
+                <input
+                  type="text"
+                  id="offshoreCompany"
+                  class="form-control"
+                  formControlName="companyName"
+                  placeholder="e.g. Acme Software Inc."
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="offshoreCountry">Country / Location</label>
+                <input
+                  type="text"
+                  id="offshoreCountry"
+                  class="form-control"
+                  formControlName="country"
+                  placeholder="e.g. United States, UK, Australia"
+                />
+              </div>
+            </div>
+
+            <!-- Number of Developers & Engagement Type -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="developersCount">
+                  Developers Needed <span class="required-star">*</span>
+                </label>
+                <input
+                  type="number"
+                  id="developersCount"
+                  min="1"
+                  class="form-control"
+                  [class.is-invalid]="isFieldInvalid('developersCount')"
+                  formControlName="developersCount"
+                />
+                @if (isFieldInvalid('developersCount')) {
+                  <div class="invalid-feedback">At least 1 developer is required.</div>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="engagementType">Engagement Model</label>
+                <select id="engagementType" class="form-select" formControlName="engagementType">
+                  @for (type of engagementTypes; track type) {
+                    <option [value]="type">{{ type }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+
+            <!-- Required Technologies Checkboxes -->
+            <div class="form-group">
+              <label class="form-label">
+                Technologies Required <span class="required-star">* (Select at least one)</span>
+              </label>
+              <div class="tech-checkbox-grid" [class.is-invalid]="isTechArrayInvalid()">
+                <div formArrayName="technologies" class="checkbox-list">
+                  @for (tech of availableTechnologies; track tech; let i = $index) {
+                    <label class="checkbox-label">
+                      <input
+                        type="checkbox"
+                        [formControlName]="i"
+                        class="custom-checkbox"
+                      />
+                      <span>{{ tech }}</span>
+                    </label>
+                  }
+                </div>
+              </div>
+              @if (isTechArrayInvalid()) {
+                <div class="invalid-feedback">Please select at least one technology stack.</div>
+              }
+            </div>
+
+            <!-- Duration Dropdown -->
+            <div class="form-group">
+              <label class="form-label" for="offshoreDuration">Expected Duration</label>
+              <select id="offshoreDuration" class="form-select" formControlName="duration">
+                @for (d of durationOptions; track d) {
+                  <option [value]="d">{{ d }}</option>
+                }
+              </select>
+            </div>
+
+            <!-- Message / Specifics -->
+            <div class="form-group">
+              <label class="form-label" for="offshoreMessage">Requirements / Project Notes</label>
+              <textarea
+                id="offshoreMessage"
+                class="form-control"
+                rows="3"
+                formControlName="message"
+                placeholder="Tell us about the project, team size, tools used, or specific skills needed..."
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">
+              <i class="bi bi-person-check-fill"></i>
+              <span>Request Developers</span>
+            </button>
+
+            <!-- Direct Email Link Below Form -->
+            <p class="direct-email-note">
+              Prefer direct email? Reach out to us at
+              <a [href]="'mailto:' + mailService.recipientEmail">{{ mailService.recipientEmail }}</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

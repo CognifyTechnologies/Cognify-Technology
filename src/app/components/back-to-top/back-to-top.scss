@@ -1,0 +1,48 @@
+.back-to-top-btn {
+  position: fixed;
+  bottom: 96px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  z-index: 989;
+  transition: var(--transition-normal);
+  animation: fadeInBtn 0.25s ease-in forwards;
+
+  &:hover {
+    background: var(--color-accent-cyan);
+    color: #ffffff;
+    border-color: var(--color-accent-cyan);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(6, 182, 212, 0.4);
+  }
+
+  @media (max-width: 576px) {
+    bottom: 80px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes fadeInBtn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

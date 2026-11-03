@@ -1,0 +1,236 @@
+<section id="contact" class="section-padding section-alt contact-section">
+  <div class="container">
+    <div class="section-header" appScrollReveal>
+      <div class="section-badge">
+        <i class="bi bi-chat-quote-fill"></i>
+        <span>Start a Conversation</span>
+      </div>
+      <h2 class="section-title">Want a website or software for your business? Tell us about it.</h2>
+      <p class="section-desc">
+        We respond to every inquiry within 24 hours with an initial architectural outline,
+        timeline estimate, and clear pricing options.
+      </p>
+    </div>
+
+    <div class="contact-layout">
+      <!-- Left Column: Contact Cards & Info -->
+      <div class="contact-info-column" appScrollReveal>
+        <div class="contact-info-card">
+          <h3 class="info-card-title">Get in Touch Directly</h3>
+          <p class="info-card-desc">
+            Whether you have a fully documented specification or just an idea on a napkin,
+            we are ready to help you plan, architect, and build.
+          </p>
+
+          <div class="contact-points">
+            <!-- Email Point -->
+            <a [href]="'mailto:' + mailService.recipientEmail" class="contact-point-item">
+              <div class="point-icon">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div class="point-content">
+                <span class="point-label">Email Us</span>
+                <span class="point-value">{{ mailService.recipientEmail }}</span>
+              </div>
+            </a>
+
+            <!-- Phone / WhatsApp Point -->
+            <a href="https://wa.me/919825641854" target="_blank" rel="noopener noreferrer" class="contact-point-item">
+              <div class="point-icon whatsapp">
+                <i class="bi bi-whatsapp"></i>
+              </div>
+              <div class="point-content">
+                <span class="point-label">Call / WhatsApp</span>
+                <span class="point-value">+91 98256 41854</span>
+              </div>
+            </a>
+
+            <!-- Location Point -->
+            <div class="contact-point-item">
+              <div class="point-icon">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div class="point-content">
+                <span class="point-label">Headquarters</span>
+                <span class="point-value">Gandhinagar, Gujarat, India</span>
+              </div>
+            </div>
+
+            <!-- Hours Point -->
+            <div class="contact-point-item">
+              <div class="point-icon">
+                <i class="bi bi-clock-fill"></i>
+              </div>
+              <div class="point-content">
+                <span class="point-label">Working Hours</span>
+                <span class="point-value">Mon – Sat: 9:00 AM – 7:00 PM IST (Global Timezones Supported)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Callout Box -->
+          <div class="consultation-callout">
+            <div class="callout-icon">
+              <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <div class="callout-text">
+              <strong>Non-Disclosure &amp; Code Privacy</strong>
+              <p>We respect your intellectual property. All project discussions and code repositories remain 100% confidential.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Project Inquiry Form -->
+      <div class="contact-form-column" appScrollReveal [revealDelay]="120">
+        <div class="contact-form-card">
+          <div class="form-card-header">
+            <h3 class="form-title">Send Us Your Project Details</h3>
+            <p class="form-subtitle">Fill in the fields below. Clicking 'Send Inquiry' will open your email client pre-filled.</p>
+          </div>
+
+          @if (isSubmittedSuccess()) {
+            <div class="alert-success-modern">
+              <i class="bi bi-check-circle-fill"></i>
+              <div>
+                <strong>Inquiry Initiated Successfully!</strong>
+                <span>
+                  Your email app has opened. Please press Send to complete your inquiry.
+                  You can also email us directly at
+                  <a [href]="'mailto:' + mailService.recipientEmail">{{ mailService.recipientEmail }}</a>.
+                </span>
+              </div>
+            </div>
+          }
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- Full Name & Email -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="contactFullName">
+                  Full Name <span class="required-star">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="contactFullName"
+                  class="form-control"
+                  [class.is-invalid]="isFieldInvalid('fullName')"
+                  formControlName="fullName"
+                  placeholder="e.g. Sarah Jenkins"
+                />
+                @if (isFieldInvalid('fullName')) {
+                  <div class="invalid-feedback">Full Name is required (minimum 2 characters).</div>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contactEmail">
+                  Email Address <span class="required-star">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="contactEmail"
+                  class="form-control"
+                  [class.is-invalid]="isFieldInvalid('email')"
+                  formControlName="email"
+                  placeholder="e.g. sarah@example.com"
+                />
+                @if (isFieldInvalid('email')) {
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                }
+              </div>
+            </div>
+
+            <!-- Phone & Company -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="contactPhone">Phone / WhatsApp</label>
+                <input
+                  type="tel"
+                  id="contactPhone"
+                  class="form-control"
+                  formControlName="phone"
+                  placeholder="e.g. +91 98256 41854"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contactCompany">Company / Organization</label>
+                <input
+                  type="text"
+                  id="contactCompany"
+                  class="form-control"
+                  formControlName="companyName"
+                  placeholder="e.g. Horizon Labs"
+                />
+              </div>
+            </div>
+
+            <!-- Project Type & Budget Range -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="projectType">
+                  Project Type <span class="required-star">*</span>
+                </label>
+                <select id="projectType" class="form-select" formControlName="projectType">
+                  @for (t of projectTypes; track t) {
+                    <option [value]="t">{{ t }}</option>
+                  }
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="budgetRange">Estimated Budget</label>
+                <select id="budgetRange" class="form-select" formControlName="budgetRange">
+                  @for (b of budgetRanges; track b) {
+                    <option [value]="b">{{ b }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+
+            <!-- Expected Timeline -->
+            <div class="form-group">
+              <label class="form-label" for="expectedTimeline">Expected Timeline</label>
+              <select id="expectedTimeline" class="form-select" formControlName="expectedTimeline">
+                @for (time of timelineOptions; track time) {
+                  <option [value]="time">{{ time }}</option>
+                }
+              </select>
+            </div>
+
+            <!-- Project Description -->
+            <div class="form-group">
+              <label class="form-label" for="projectDescription">
+                Project Description <span class="required-star">*</span>
+              </label>
+              <textarea
+                id="projectDescription"
+                class="form-control"
+                [class.is-invalid]="isFieldInvalid('projectDescription')"
+                formControlName="projectDescription"
+                rows="4"
+                placeholder="Describe your project goals, required pages/features, existing tech or reference websites..."
+              ></textarea>
+              @if (isFieldInvalid('projectDescription')) {
+                <div class="invalid-feedback">Please describe your project (minimum 10 characters).</div>
+              }
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">
+              <i class="bi bi-send-fill"></i>
+              <span>Send Inquiry</span>
+            </button>
+
+            <!-- Direct Email Link Below Form -->
+            <p class="direct-email-note">
+              Prefer direct email? Send your brief to
+              <a [href]="'mailto:' + mailService.recipientEmail">{{ mailService.recipientEmail }}</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

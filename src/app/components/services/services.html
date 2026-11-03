@@ -1,0 +1,54 @@
+<section id="services" class="section-padding section-alt services-section">
+  <div class="container">
+    <div class="section-header" appScrollReveal>
+      <div class="section-badge">
+        <i class="bi bi-gear-wide-connected"></i>
+        <span>What We Deliver</span>
+      </div>
+      <h2 class="section-title">End-to-End Engineering &amp; IT Solutions</h2>
+      <p class="section-desc">
+        From initial concept design to production deployment and long-term support,
+        we provide complete technical execution tailored to your growth goals.
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid-3 services-grid">
+      @for (service of services; track service.id; let idx = $index) {
+        <div class="service-card" appScrollReveal [revealDelay]="idx * 75">
+          <div class="service-card-top">
+            <div class="service-icon">
+              <i [class]="'bi ' + service.icon"></i>
+            </div>
+            @if (service.badge) {
+              <span class="service-badge">{{ service.badge }}</span>
+            }
+          </div>
+
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-desc">{{ service.description }}</p>
+
+          <ul class="service-bullets">
+            @for (bullet of service.bullets; track bullet) {
+              <li>
+                <i class="bi bi-check2-circle"></i>
+                <span>{{ bullet }}</span>
+              </li>
+            }
+          </ul>
+
+          <div class="service-footer">
+            <button
+              type="button"
+              class="service-action-link"
+              (click)="scrollService.scrollTo('contact', $event)"
+            >
+              <span>Discuss this service</span>
+              <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

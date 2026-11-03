@@ -1,0 +1,114 @@
+<section id="clients" class="section-padding section-alt clients-section">
+  <div class="container">
+    <div class="section-header" appScrollReveal>
+      <div class="section-badge">
+        <i class="bi bi-briefcase-fill"></i>
+        <span>Client Showcase &amp; Track Record</span>
+      </div>
+      <h2 class="section-title">Projects Delivered with Excellence</h2>
+      <p class="section-desc">
+        We partner with businesses and institutions to deliver high-impact software solutions.
+        Here is a highlight from our growing portfolio of work.
+      </p>
+    </div>
+
+    <!-- Client Cards Grid -->
+    <div class="grid-3 clients-grid">
+      @for (client of clientProjects; track client.id; let cIdx = $index) {
+        <div
+          class="client-card"
+          [class.placeholder-card]="client.isPlaceholder"
+          appScrollReveal
+          [revealDelay]="cIdx * 90"
+        >
+          @if (!client.isPlaceholder) {
+            <!-- Real Delivered Project Card -->
+            <div class="client-card-img-wrap">
+              <img
+                [src]="client.image"
+                [alt]="client.name + ' - Cognify Technology Project'"
+                class="client-card-img"
+              />
+              <span class="client-category-badge">{{ client.category }}</span>
+            </div>
+
+            <div class="client-card-content">
+              <h3 class="client-name">{{ client.name }}</h3>
+              <p class="client-desc">{{ client.description }}</p>
+
+              <div class="client-tags">
+                @for (tag of client.tags; track tag) {
+                  <span class="badge-tech">{{ tag }}</span>
+                }
+              </div>
+
+              @if (client.liveUrl) {
+                <div class="client-action">
+                  <a
+                    [href]="client.liveUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-outline btn-sm w-100"
+                  >
+                    <span>Visit Live Website</span>
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+              }
+            </div>
+          } @else {
+            <!-- Placeholder Card for Prospective Clients -->
+            <div class="placeholder-card-inner">
+              <div class="placeholder-icon-wrap">
+                <i class="bi bi-plus-circle-dotted"></i>
+              </div>
+              <span class="client-category-badge outline">{{ client.category }}</span>
+              <h3 class="client-name placeholder-title">{{ client.name }}</h3>
+              <p class="client-desc">{{ client.description }}</p>
+
+              <div class="client-tags">
+                @for (tag of client.tags; track tag) {
+                  <span class="badge-tech muted">{{ tag }}</span>
+                }
+              </div>
+
+              <div class="client-action">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm w-100"
+                  (click)="scrollService.scrollTo('contact', $event)"
+                >
+                  <span>Start Your Project</span>
+                  <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Testimonial Placeholder Block -->
+    <div class="testimonial-section-block" appScrollReveal [revealDelay]="180">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          @for (s of [1, 2, 3, 4, 5]; track s) {
+            <i class="bi bi-star-fill star-icon"></i>
+          }
+        </div>
+        <blockquote class="testimonial-quote">
+          "{{ testimonial.quote }}"
+        </blockquote>
+        <div class="testimonial-author-block">
+          <div class="author-avatar-initials">
+            <i class="bi bi-building-check"></i>
+          </div>
+          <div>
+            <div class="author-name">{{ testimonial.author }}</div>
+            <div class="author-title">{{ testimonial.designation }} &bull; {{ testimonial.organization }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

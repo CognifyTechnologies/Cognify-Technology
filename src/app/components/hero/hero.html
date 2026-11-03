@@ -1,0 +1,111 @@
+<section id="hero" class="hero-section">
+  <div class="hero-bg-glow glow-1"></div>
+  <div class="hero-bg-glow glow-2"></div>
+
+  <div class="container hero-container">
+    <div class="hero-content" appScrollReveal>
+      <!-- Trust pill -->
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Trusted IT Partner &amp; Offshore Engineering</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-title">
+        Building Scalable Web &amp; Cloud Solutions That Power Your
+        <span class="text-gradient">Business Growth.</span>
+      </h1>
+
+      <!-- Subheading -->
+      <p class="hero-subtitle">
+        Cognify Technology engineers high-performance web applications, robust enterprise backends,
+        and provides dedicated offshore developers who seamlessly integrate with your team to deliver on time and within budget.
+      </p>
+
+      <!-- CTA Buttons (No hash in URL) -->
+      <div class="hero-actions">
+        <button
+          type="button"
+          class="btn btn-primary btn-hero"
+          (click)="scrollService.scrollTo('contact', $event)"
+        >
+          <span>Get a Free Quote</span>
+          <i class="bi bi-arrow-right"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline btn-hero"
+          (click)="scrollService.scrollTo('offshore', $event)"
+        >
+          <i class="bi bi-person-check-fill"></i>
+          <span>Hire Offshore Developers</span>
+        </button>
+      </div>
+
+      <!-- Tech Feature Pills -->
+      <div class="hero-tags">
+        @for (item of techHighlights; track item.label) {
+          <div class="hero-tag-item">
+            <i [class]="'bi ' + item.icon"></i>
+            <span>{{ item.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Right Side Hero Visual / Interactive Showcase Card -->
+    <div class="hero-visual" appScrollReveal [revealDelay]="150">
+      <div class="hero-code-card">
+        <!-- Mock Window Header -->
+        <div class="code-card-header">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="code-file-name">
+            <i class="bi bi-file-earmark-code"></i> cognify-solution.ts
+          </div>
+          <div class="status-live">
+            <span class="pulse-indicator"></span> Production Ready
+          </div>
+        </div>
+
+        <!-- Code Snippet with escaped curly braces -->
+        <div class="code-body">
+          <pre><code><span class="keyword">const</span> cognifyMission = &#123;
+  <span class="property">clientSuccess</span>: <span class="string">'High Performance &amp; Scalability'</span>,
+  <span class="property">coreServices</span>: [
+    <span class="string">'Custom Web Apps'</span>,
+    <span class="string">'Cloud Architecture'</span>,
+    <span class="string">'Dedicated Offshore Teams'</span>
+  ],
+  <span class="property">deliveryStandard</span>: &#123;
+    <span class="property">codeQuality</span>: <span class="string">'Clean &amp; Tested'</span>,
+    <span class="property">communication</span>: <span class="string">'100% Transparent'</span>,
+    <span class="property">onTimeDelivery</span>: <span class="boolean">true</span>
+  &#125;
+&#125;;</code></pre>
+        </div>
+
+        <!-- Visual Stats Strip Inside Hero Card -->
+        <div class="hero-card-footer">
+          <div class="footer-stat">
+            <div class="stat-number">2+</div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="footer-stat">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Client Projects</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="footer-stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Commitment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

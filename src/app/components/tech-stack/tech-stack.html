@@ -1,0 +1,53 @@
+<section id="tech-stack" class="section-padding tech-stack-section">
+  <div class="container">
+    <div class="section-header" appScrollReveal>
+      <div class="section-badge">
+        <i class="bi bi-stack"></i>
+        <span>Tools &amp; Frameworks</span>
+      </div>
+      <h2 class="section-title">Battle-Tested Technologies for Modern Products</h2>
+      <p class="section-desc">
+        We specialize in modern frontend, backend, and cloud ecosystems that ensure your software
+        is fast, maintainable, scalable, and secure.
+      </p>
+    </div>
+
+    <!-- Tech Groups Grid -->
+    <div class="tech-groups-container">
+      @for (group of techGroups; track group.category; let gIdx = $index) {
+        <div class="tech-group-card" appScrollReveal [revealDelay]="gIdx * 90">
+          <div class="group-header">
+            <div class="group-icon">
+              <i [class]="'bi ' + group.categoryIcon"></i>
+            </div>
+            <div>
+              <h3 class="group-category-title">{{ group.category }}</h3>
+              <p class="group-category-desc">{{ group.categoryDescription }}</p>
+            </div>
+          </div>
+
+          <div class="group-items-grid">
+            @for (tech of group.items; track tech.name) {
+              <div class="tech-item-card">
+                <div class="tech-card-top">
+                  <div class="tech-icon-circle">
+                    <i [class]="'bi ' + tech.icon"></i>
+                  </div>
+                  <span class="tech-level-badge">{{ tech.level }}</span>
+                </div>
+                <div class="tech-info">
+                  <div class="tech-name-line">
+                    <h4 class="tech-name">{{ tech.name }}</h4>
+                    <span class="tech-role">{{ tech.role }}</span>
+                  </div>
+                  <p class="tech-desc">{{ tech.description }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

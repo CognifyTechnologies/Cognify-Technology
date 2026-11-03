@@ -1,0 +1,123 @@
+<header class="navbar-wrapper" [class.scrolled]="isScrolled()">
+  <div class="container-fluid navbar-inner">
+    <!-- Brand / Logo -->
+    <a
+      href="javascript:void(0)"
+      class="brand-link"
+      (click)="navigateToSection('hero', $event)"
+      title="Cognify Technology Home"
+    >
+      <div class="brand-logo-wrap">
+        <img
+          src="/images/cognify-logo.jpg"
+          alt="Cognify Technology Logo"
+          class="brand-logo"
+        />
+      </div>
+      <div class="brand-text-block">
+        <span class="brand-title">Cognify</span>
+        <span class="brand-subtitle">Technology</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav-desktop">
+      <ul class="nav-links">
+        @for (item of navItems; track item.sectionId) {
+          <li class="nav-item">
+            <a
+              href="javascript:void(0)"
+              class="nav-link"
+              [class.active]="activeSection() === item.sectionId"
+              (click)="navigateToSection(item.sectionId, $event)"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="nav-actions">
+      <!-- Dark / Light Theme Toggle -->
+      <button
+        type="button"
+        class="theme-toggle-btn"
+        (click)="toggleTheme()"
+        [attr.aria-label]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+        title="Toggle Light / Dark Mode"
+      >
+        @if (themeService.isDark()) {
+          <i class="bi bi-sun-fill theme-icon sun"></i>
+        } @else {
+          <i class="bi bi-moon-stars-fill theme-icon moon"></i>
+        }
+      </button>
+
+      <!-- Get a Quote CTA Button -->
+      <button
+        type="button"
+        class="btn btn-primary btn-sm cta-quote-btn"
+        (click)="navigateToSection('contact', $event)"
+      >
+        <span>Get a Quote</span>
+        <i class="bi bi-arrow-right-short"></i>
+      </button>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        type="button"
+        class="mobile-toggle-btn"
+        (click)="toggleMobileMenu()"
+        [class.open]="isMobileMenuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer / Dropdown -->
+  @if (isMobileMenuOpen()) {
+    <div class="mobile-drawer-overlay" (click)="closeMobileMenu()"></div>
+    <div class="mobile-drawer">
+      <div class="mobile-drawer-header">
+        <div class="brand-link">
+          <img src="/images/cognify-logo.jpg" alt="Cognify Logo" class="brand-logo-sm" />
+          <span class="brand-title">Cognify Technology</span>
+        </div>
+        <button type="button" class="close-drawer-btn" (click)="closeMobileMenu()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <ul class="mobile-nav-list">
+        @for (item of navItems; track item.sectionId) {
+          <li>
+            <a
+              href="javascript:void(0)"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === item.sectionId"
+              (click)="navigateToSection(item.sectionId, $event)"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+
+      <div class="mobile-drawer-actions">
+        <button
+          type="button"
+          class="btn btn-primary w-100"
+          (click)="navigateToSection('contact', $event)"
+        >
+          Get a Free Quote
+        </button>
+      </div>
+    </div>
+  }
+</header>

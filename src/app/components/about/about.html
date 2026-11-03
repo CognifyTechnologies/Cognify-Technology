@@ -1,0 +1,98 @@
+<section id="about" class="section-padding about-section">
+  <div class="container">
+    <!-- Two Column Layout -->
+    <div class="about-grid">
+      <!-- Left Column: Story & Mission -->
+      <div class="about-left" appScrollReveal>
+        <div class="section-badge">
+          <i class="bi bi-info-circle-fill"></i>
+          <span>About Cognify Technology</span>
+        </div>
+
+        <h2 class="section-title">
+          We turn business problems into software that helps you grow.
+        </h2>
+
+        <p class="about-paragraph lead">
+          Cognify Technology is a software company that builds web and cloud applications to solve
+          real business problems. We don't just write code. We first understand how your business
+          works, where time and money are being lost, and where growth is possible. Then we build a
+          solution that fits.
+        </p>
+
+        <p class="about-paragraph">
+          With 2+ years of experience and 5+ client projects delivered, we have worked with schools,
+          growing businesses, and teams that needed reliable technical support. Whether you need a
+          new website, a custom application, or dedicated offshore developers, we focus on quality,
+          clear communication, and on-time delivery.
+        </p>
+
+        <!-- Mission Statement Box -->
+        <div class="mission-box">
+          <div class="mission-icon">
+            <i class="bi bi-bullseye"></i>
+          </div>
+          <div>
+            <div class="mission-title">Our Mission</div>
+            <p class="mission-text">
+              "To help businesses work smarter and grow faster through simple, scalable, and dependable software."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: 4 Highlight Cards Grid -->
+      <div class="about-right" appScrollReveal [revealDelay]="150">
+        <div class="highlights-grid">
+          @for (item of highlights; track item.title) {
+            <div class="highlight-card">
+              <div class="highlight-icon">
+                <i [class]="'bi ' + item.icon"></i>
+              </div>
+              <h3 class="highlight-title">{{ item.title }}</h3>
+              <p class="highlight-desc">{{ item.description }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Founder Message Block Below -->
+    <div class="founder-block" appScrollReveal [revealDelay]="200">
+      <div class="founder-card">
+        <div class="founder-quote-mark">
+          <i class="bi bi-quote"></i>
+        </div>
+
+        <div class="founder-card-inner">
+          <div class="founder-photo-wrapper">
+            <img
+              src="/images/founder.jpg"
+              alt="Venish Patel - Founder &amp; CEO of Cognify Technology"
+              class="founder-photo"
+            />
+            <div class="founder-photo-badge">
+              <i class="bi bi-patch-check-fill"></i>
+            </div>
+          </div>
+
+          <div class="founder-content">
+            <blockquote class="founder-quote">
+              "I started Cognify Technology with a simple belief: technology should make a business easier
+              to run, not harder. Every project we take on begins with one question: what problem are we
+              solving for you? When our clients save time, reduce costs, and grow with the software we
+              build, that is when we know we've done our job well."
+            </blockquote>
+
+            <div class="founder-meta">
+              <!-- Clearly marked placeholder name Venish Patel [YOUR NAME] -->
+              <h4 class="founder-name">Venish Patel</h4>
+              <p class="founder-title">Founder &amp; CEO, Cognify Technology</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
