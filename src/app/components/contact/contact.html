@@ -172,31 +172,34 @@
                 <label class="form-label" for="projectType">
                   Project Type <span class="required-star">*</span>
                 </label>
-                <select id="projectType" class="form-select" formControlName="projectType">
-                  @for (t of projectTypes; track t) {
-                    <option [value]="t">{{ t }}</option>
-                  }
-                </select>
+                <app-custom-select
+                  inputId="projectType"
+                  formControlName="projectType"
+                  [options]="projectTypes"
+                  placeholder="Select Project Type"
+                ></app-custom-select>
               </div>
 
               <div class="form-group">
                 <label class="form-label" for="budgetRange">Estimated Budget</label>
-                <select id="budgetRange" class="form-select" formControlName="budgetRange">
-                  @for (b of budgetRanges; track b) {
-                    <option [value]="b">{{ b }}</option>
-                  }
-                </select>
+                <app-custom-select
+                  inputId="budgetRange"
+                  formControlName="budgetRange"
+                  [options]="budgetRanges"
+                  placeholder="Select Budget Range"
+                ></app-custom-select>
               </div>
             </div>
 
             <!-- Expected Timeline -->
             <div class="form-group">
               <label class="form-label" for="expectedTimeline">Expected Timeline</label>
-              <select id="expectedTimeline" class="form-select" formControlName="expectedTimeline">
-                @for (time of timelineOptions; track time) {
-                  <option [value]="time">{{ time }}</option>
-                }
-              </select>
+              <app-custom-select
+                inputId="expectedTimeline"
+                formControlName="expectedTimeline"
+                [options]="timelineOptions"
+                placeholder="Select Expected Timeline"
+              ></app-custom-select>
             </div>
 
             <!-- Project Description -->

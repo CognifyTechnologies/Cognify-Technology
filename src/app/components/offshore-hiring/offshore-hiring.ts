@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { MailService } from '../../services/mail.service';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { CustomSelectComponent } from '../custom-select/custom-select';
 
 function requireAtLeastOneCheckbox(min = 1) {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -26,7 +27,12 @@ function requireAtLeastOneCheckbox(min = 1) {
 @Component({
   selector: 'app-offshore-hiring',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ScrollRevealDirective],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ScrollRevealDirective,
+    CustomSelectComponent,
+  ],
   templateUrl: './offshore-hiring.html',
   styleUrl: './offshore-hiring.scss',
 })

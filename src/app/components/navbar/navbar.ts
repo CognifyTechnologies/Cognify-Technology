@@ -62,11 +62,18 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleMobileMenu(): void {
-    this.isMobileMenuOpen.update((v) => !v);
+    const next = !this.isMobileMenuOpen();
+    this.isMobileMenuOpen.set(next);
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = next ? 'hidden' : '';
+    }
   }
 
   closeMobileMenu(): void {
     this.isMobileMenuOpen.set(false);
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+    }
   }
 
   toggleTheme(): void {

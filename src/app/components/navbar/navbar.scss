@@ -6,10 +6,14 @@
   height: var(--header-height);
   z-index: 1000;
   background-color: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid transparent;
   transition: all 0.3s ease;
+
+  /* Prevent backdrop-filter stacking-context bug when mobile drawer is open */
+  &:not(.menu-open) {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
 
   &.scrolled {
     background-color: var(--bg-glass);
@@ -34,28 +38,34 @@
 }
 
 .brand-logo-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #ffffff;
-  box-shadow: 0 2px 8px rgba(6, 182, 212, 0.2);
+  box-shadow: 0 2px 10px rgba(6, 182, 212, 0.25);
+  flex-shrink: 0;
 }
 
 .brand-logo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 3px;
 }
 
 .brand-logo-sm {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
 }
 
 .brand-text-block {
@@ -202,10 +212,17 @@
 /* Mobile Drawer */
 .mobile-drawer-overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  z-index: 1001;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(3, 7, 18, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 99998;
 }
 
 .mobile-drawer {
@@ -213,15 +230,21 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 82%;
-  max-width: 340px;
-  background: var(--bg-card);
-  z-index: 1002;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
+  width: 85%;
+  max-width: 360px;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 99999;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-left: 1px solid var(--border-color);
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   padding: 24px;
-  animation: slideDrawer 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  animation: slideDrawer 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes slideDrawer {
@@ -240,18 +263,40 @@
   padding-bottom: 20px;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 20px;
+
+  .brand-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.1;
+  }
+
+  .brand-subtitle {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent-cyan);
+  }
 }
 
 .close-drawer-btn {
   background: transparent;
   border: none;
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   color: var(--text-secondary);
   cursor: pointer;
   padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-normal);
 
   &:hover {
-    color: var(--text-primary);
+    color: var(--color-accent-cyan);
+    background: rgba(6, 182, 212, 0.1);
   }
 }
 
@@ -259,24 +304,30 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: auto;
 }
 
 .mobile-nav-link {
   display: block;
-  padding: 12px 16px;
+  padding: 13px 18px;
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-secondary);
   border-radius: var(--radius-md);
   transition: var(--transition-normal);
 
-  &:hover,
-  &.active {
-    background: rgba(6, 182, 212, 0.1);
+  &:hover {
+    background: rgba(6, 182, 212, 0.08);
     color: var(--color-accent-cyan);
-    padding-left: 20px;
+    padding-left: 22px;
+  }
+
+  &.active {
+    background: rgba(6, 182, 212, 0.16);
+    color: var(--color-accent-cyan);
+    padding-left: 22px;
+    font-weight: 700;
   }
 }
 

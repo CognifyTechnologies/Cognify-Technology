@@ -1,4 +1,4 @@
-<header class="navbar-wrapper" [class.scrolled]="isScrolled()">
+<header class="navbar-wrapper" [class.scrolled]="isScrolled()" [class.menu-open]="isMobileMenuOpen()">
   <div class="container-fluid navbar-inner">
     <!-- Brand / Logo -->
     <a
@@ -87,9 +87,12 @@
       <div class="mobile-drawer-header">
         <div class="brand-link">
           <img src="/images/cognify-logo.jpg" alt="Cognify Logo" class="brand-logo-sm" />
-          <span class="brand-title">Cognify Technology</span>
+          <div class="brand-text-block">
+            <span class="brand-title">Cognify</span>
+            <span class="brand-subtitle">Technology</span>
+          </div>
         </div>
-        <button type="button" class="close-drawer-btn" (click)="closeMobileMenu()">
+        <button type="button" class="close-drawer-btn" (click)="closeMobileMenu()" aria-label="Close Menu">
           <i class="bi bi-x-lg"></i>
         </button>
       </div>

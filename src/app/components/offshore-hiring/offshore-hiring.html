@@ -183,11 +183,12 @@
 
               <div class="form-group">
                 <label class="form-label" for="engagementType">Engagement Model</label>
-                <select id="engagementType" class="form-select" formControlName="engagementType">
-                  @for (type of engagementTypes; track type) {
-                    <option [value]="type">{{ type }}</option>
-                  }
-                </select>
+                <app-custom-select
+                  inputId="engagementType"
+                  formControlName="engagementType"
+                  [options]="engagementTypes"
+                  placeholder="Select Engagement Model"
+                ></app-custom-select>
               </div>
             </div>
 
@@ -218,11 +219,12 @@
             <!-- Duration Dropdown -->
             <div class="form-group">
               <label class="form-label" for="offshoreDuration">Expected Duration</label>
-              <select id="offshoreDuration" class="form-select" formControlName="duration">
-                @for (d of durationOptions; track d) {
-                  <option [value]="d">{{ d }}</option>
-                }
-              </select>
+              <app-custom-select
+                inputId="offshoreDuration"
+                formControlName="duration"
+                [options]="durationOptions"
+                placeholder="Select Duration"
+              ></app-custom-select>
             </div>
 
             <!-- Message / Specifics -->

@@ -8,11 +8,17 @@ import {
 } from '@angular/forms';
 import { MailService } from '../../services/mail.service';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { CustomSelectComponent } from '../custom-select/custom-select';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ScrollRevealDirective],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ScrollRevealDirective,
+    CustomSelectComponent,
+  ],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
@@ -33,10 +39,12 @@ export class ContactComponent {
   ];
 
   readonly budgetRanges = [
-    'Under $500',
-    '$500 - $1,000',
-    '$1,000 - $3,000',
-    '$3,000+',
+    'Under ₹10,000',
+    '₹10,000 – ₹25,000',
+    '₹25,000 – ₹50,000',
+    '₹50,000 – ₹75,000',
+    '₹75,000 – ₹1,00,000',
+    '₹1,00,000+',
     'Not sure yet',
   ];
 
@@ -53,7 +61,7 @@ export class ContactComponent {
     phone: [''],
     companyName: [''],
     projectType: ['Business Website', [Validators.required]],
-    budgetRange: ['$1,000 - $3,000'],
+    budgetRange: ['₹25,000 – ₹50,000'],
     expectedTimeline: ['1 - 2 Months'],
     projectDescription: ['', [Validators.required, Validators.minLength(10)]],
   });
@@ -80,7 +88,7 @@ export class ContactComponent {
     this.isSubmittedSuccess.set(true);
     this.contactForm.reset({
       projectType: 'Business Website',
-      budgetRange: '$1,000 - $3,000',
+      budgetRange: '₹25,000 – ₹50,000',
       expectedTimeline: '1 - 2 Months',
     });
   }
