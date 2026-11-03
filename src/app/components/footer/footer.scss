@@ -5,7 +5,8 @@
   padding-bottom: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 
-  html.dark-theme & {
+  :host-context(.dark-theme) &,
+  :host-context([data-theme='dark']) & {
     background-color: #040811;
   }
 }
