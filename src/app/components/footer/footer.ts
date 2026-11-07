@@ -13,8 +13,7 @@ export class FooterComponent {
   readonly scrollService = inject(ScrollService);
 
   readonly currentYear = new Date().getFullYear();
-  readonly email = 'venish.patel@cognifytechnology.in';
-  readonly phone = '+91 98256 41854';
+  readonly email = 'sales@cognifytechnology.in';
   readonly location = 'Gandhinagar, Gujarat, India';
 
   readonly quickLinks = [

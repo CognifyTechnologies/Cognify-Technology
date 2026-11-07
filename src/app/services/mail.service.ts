@@ -9,7 +9,7 @@ export interface MailField {
   providedIn: 'root',
 })
 export class MailService {
-  readonly recipientEmail = 'venish.patel@cognifytechnology.in';
+  readonly recipientEmail = 'sales@cognifytechnology.in';
 
   /**
    * Formats fields into readable "Label: value" lines separated by line breaks,
